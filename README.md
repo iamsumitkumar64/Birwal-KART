@@ -16,7 +16,7 @@
 
 ## 🛠 Tech Stack
 
-- **Frontend**: React.js, CSS
+- **Frontend**: EJS, CSS, JS
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
 - **Authentication**: JWT

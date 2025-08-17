@@ -4,19 +4,21 @@ import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import http from 'http';
 import { Server } from 'socket.io';
+import dotenv from 'dotenv';
 
 const app = exp();
 const server = http.createServer(app);
 const io = new Server(server);
 const onlineUsers = new Map();
 let currentUser;
+dotenv.config();
 
 import { userDB } from './models/user.js';
 import { supportDB } from './models/support.js';
 import { productDB } from './models/product.js';
 
-const Port = 8000;
-const db_url = 'mongodb://127.0.0.1:27017/ECOMMERCE'
+const Port = process.env.PORT;
+const db_url = process.env.MONGO_URI;
 
 app.use(exp.urlencoded({ extended: false }))
 app.use(cookieParser());

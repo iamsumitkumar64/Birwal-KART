@@ -26,15 +26,15 @@ app.use(exp.json());
 app.set("view engine", "ejs");
 app.use(exp.static('upload'))
 app.use('/', allRoute);
-// io.use((socket, next) => {
-//     const token = socket.handshake.auth.token;
-//     if (!token || token !== 'valid-token') {
-//         const err = new Error('Authentication failed');
-//         err.data = { reason: 'Invalid token' };
-//         return next(err);
-//     }
-//     next();
-// });
+io.use((socket, next) => {
+    const token = socket.handshake.auth.token;
+    if (!token || token !== 'valid-token') {
+        const err = new Error('Authentication failed');
+        err.data = { reason: 'Invalid token' };
+        return next(err);
+    }
+    next();
+});
 
 mongoose.connect(db_url)
     .then(() => { console.log(`Database Connected At : ${db_url}`) })
